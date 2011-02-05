@@ -19,6 +19,7 @@ namespace KopiLua
 	using LUA_INTFRM_T		= System.Int64;
 	using TValue = Lua.lua_TValue;
 	using lua_Number = System.Double;
+    using System.Globalization;
 
 	public partial class Lua
 	{
@@ -551,7 +552,7 @@ namespace KopiLua
 
 			try
 			{
-				return Convert.ToDouble(str.ToString());
+				return Convert.ToDouble(str.ToString(), CultureInfo.GetCultureInfo("en-US"));
 			}
 			catch (System.OverflowException)
 			{
@@ -947,22 +948,22 @@ namespace KopiLua
 							}
 						case 'c':
 							{
-								argp[parm_index++] = Convert.ToChar(str);
+                                argp[parm_index++] = Convert.ToChar(str, CultureInfo.GetCultureInfo("en-US"));
 								break;
 							}
 						case 'd':
 							{
-								argp[parm_index++] = Convert.ToInt32(str);
+                                argp[parm_index++] = Convert.ToInt32(str, CultureInfo.GetCultureInfo("en-US"));
 								break;
 							}
 						case 'l':
 							{
-								argp[parm_index++] = Convert.ToDouble(str);
+                                argp[parm_index++] = Convert.ToDouble(str, CultureInfo.GetCultureInfo("en-US"));
 								break;
 							}
 						case 'f':
 							{
-								argp[parm_index++] = Convert.ToDouble(str);
+                                argp[parm_index++] = Convert.ToDouble(str, CultureInfo.GetCultureInfo("en-US"));
 								break;
 							}
 						//case 'p':
