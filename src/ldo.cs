@@ -142,9 +142,14 @@ namespace KopiLua
 #if XBOX
 			throw new ApplicationException();
 #else
+#if SILVERLIGHT
+            throw new SystemException();
+#else
 			Environment.Exit(EXIT_FAILURE);
 #endif
-		  }
+#endif
+
+          }
 		}
 
 

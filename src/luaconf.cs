@@ -552,7 +552,7 @@ namespace KopiLua
 
 			try
 			{
-				return Convert.ToDouble(str.ToString(), CultureInfo.GetCultureInfo("en-US"));
+				return Convert.ToDouble(str.ToString(), Culture("en-US"));
 			}
 			catch (System.OverflowException)
 			{
@@ -568,6 +568,15 @@ namespace KopiLua
 				return 0;
 			}
 		}
+
+        private static IFormatProvider Culture(string p)
+        {
+#if SILVERLIGHT
+            return new CultureInfo(p);
+#else
+            return CultureInfo.GetCultureInfo(p);
+#endif
+        }
 
 		/*
 		@@ The luai_num* macros define the primitive operations over numbers.
@@ -948,22 +957,22 @@ namespace KopiLua
 							}
 						case 'c':
 							{
-                                argp[parm_index++] = Convert.ToChar(str, CultureInfo.GetCultureInfo("en-US"));
+                                argp[parm_index++] = Convert.ToChar(str, Culture("en-US"));
 								break;
 							}
 						case 'd':
 							{
-                                argp[parm_index++] = Convert.ToInt32(str, CultureInfo.GetCultureInfo("en-US"));
+                                argp[parm_index++] = Convert.ToInt32(str, Culture("en-US"));
 								break;
 							}
 						case 'l':
 							{
-                                argp[parm_index++] = Convert.ToDouble(str, CultureInfo.GetCultureInfo("en-US"));
+                                argp[parm_index++] = Convert.ToDouble(str, Culture("en-US"));
 								break;
 							}
 						case 'f':
 							{
-                                argp[parm_index++] = Convert.ToDouble(str, CultureInfo.GetCultureInfo("en-US"));
+                                argp[parm_index++] = Convert.ToDouble(str, Culture("en-US"));
 								break;
 							}
 						//case 'p':
@@ -1277,7 +1286,7 @@ namespace KopiLua
 				f.Seek(-1, SeekOrigin.Current);
 		}
 
-#if XBOX
+#if XBOX || SILVERLIGHT
 		public static Stream stdout;
 		public static Stream stdin;
 		public static Stream stderr;

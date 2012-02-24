@@ -532,7 +532,7 @@ namespace AT.MIN
 					#region p - pointer
 					case 'p':   // pointer
 						if ( o is IntPtr )
-#if XBOX
+#if XBOX || SILVERLIGHT
 							w = ( (IntPtr)o ).ToString();
 #else
 							w = "0x" + ( (IntPtr)o ).ToString( "x" );

@@ -1,0 +1,6 @@
+bin
+obj
+_ReSharper.KopiLua
+*.user
+*.ReSharper
+*.suo

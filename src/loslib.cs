@@ -36,7 +36,7 @@ namespace KopiLua
 
 
 		private static int os_execute (lua_State L) {
-#if XBOX
+#if XBOX || SILVERLIGHT
 			luaL_error(L, "os_execute not supported on XBox360");
 #else
 			CharPtr strCmdLine = "/C regenresx " + luaL_optstring(L, 1, null);
@@ -240,7 +240,11 @@ namespace KopiLua
 #if XBOX
 			luaL_error(L, "os_exit not supported on XBox360");
 #else
+#if SILVERLIGHT
+            throw new SystemException();
+#else
 			Environment.Exit(EXIT_SUCCESS);
+#endif
 #endif
 			return 0;
 		}

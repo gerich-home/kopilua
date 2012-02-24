@@ -71,10 +71,17 @@ namespace KopiLua
 
 		public static object LoadMem(LoadState S, Type t, int n)
 		{
+#if SILVERLIGHT
+            List<object> array = new List<object>();
+            for (int i = 0; i < n; i++)
+                array.Add(LoadMem(S, t));
+            return array.ToArray();
+#else
 			ArrayList array = new ArrayList();
 			for (int i=0; i<n; i++)
 				array.Add(LoadMem(S, t));
 			return array.ToArray(t);
+#endif
 		}
 		public static lu_byte LoadByte(LoadState S)		{return (lu_byte)LoadChar(S);}
 		public static object LoadVar(LoadState S, Type t) { return LoadMem(S, t); }

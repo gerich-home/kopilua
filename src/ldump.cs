@@ -30,7 +30,7 @@ namespace KopiLua
 
 		public static void DumpMem(object b, DumpState D)
 		{
-#if XBOX
+#if XBOX || SILVERLIGHT
 			// todo: implement this - mjf
 			Debug.Assert(false);
 #else
