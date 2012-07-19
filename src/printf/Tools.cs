@@ -679,9 +679,7 @@ namespace AT.MIN
 						w = w.PadLeft( FieldLength - 1, Padding );
 					if ( IsPositive( Value, true ) )
 						w = ( PositiveSign ?
-								"+" : ( PositiveSpace ?
-										" " : ( FieldLength != int.MinValue ?
-												Padding.ToString() : String.Empty ) ) ) + w;
+								"+" : ( PositiveSpace ? " " : String.Empty ) ) + w;
 					else
 						w = "-" + w;
 				}
