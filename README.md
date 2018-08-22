@@ -1,5 +1,8 @@
 README for Kopi Lua 0.1 (Alpha)
 
+Please check the repository here as it looks that the author of the project publicated the same sources on github:
+https://github.com/Myndale/KopiLua
+
 [![Build status](https://ci.appveyor.com/api/projects/status/9jaodpr74j8a9t4c?svg=true)](https://ci.appveyor.com/project/gerich-home/kopilua)
 
 * What is Kopi Lua?
